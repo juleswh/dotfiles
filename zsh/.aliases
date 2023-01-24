@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+
+#!/bin/bash
+
+export IDE=/usr/bin/code
+
+alias dc="docker-compose"
+alias bat='batcat'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
