@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+((pacmd list-sinks | grep bluetooth.protocol | grep -q a2dp) && \
+pactl set-card-profile bluez_card.20_64_DE_C6_A6_D6 handsfree_head_unit || \
+pactl set-card-profile bluez_card.20_64_DE_C6_A6_D6 a2dp_sink) && \
+(mode=$(pacmd list-sinks | grep bluetooth.protocol)
+mode=$(echo $mode | grep --only-matching -e a2dp -e handsfree_head_unit)
+echo $mode
+notify-send $mode "Switch to $mode" -i audio-headset
+) ||
+(
+  notify-send 'no devide' 'no such device' -i audio-headset
+)
+
